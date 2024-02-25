@@ -11,6 +11,7 @@ import connectDb from "./dbConn.js";
 import { client } from "./dbConn.js";
 
 const app = express();
+app.set("trust proxy",1);
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);
   res.header("Access-Control-Allow-Origin", "https://oyuncupuanla.com");
