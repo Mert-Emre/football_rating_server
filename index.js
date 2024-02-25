@@ -14,7 +14,7 @@ const app = express();
 app.set("trust proxy",1);
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-Origin", "https://football-rating-mei.netlify.app/");
+  res.header("Access-Control-Allow-Origin", "https://football-rating-mei.netlify.app");
   res.header(
     "Access-Control-Allow-Methods",
     "GET,PUT,POST,DELETE,UPDATE,OPTIONS"
