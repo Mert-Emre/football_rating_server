@@ -12,15 +12,19 @@ import { client } from "./dbConn.js";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://magical-frangollo-1ba4f0.netlify.app",
-    credentials: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    allowedHeaders:
-      "X-Requested-With,X-HTTP-Method-Override,Content-Type,Accept",
-  })
-);
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Origin", "https://magical-frangollo-1ba4f0.netlify.app");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET,PUT,POST,DELETE,UPDATE,OPTIONS"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept"
+  );
+  next();
+});
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieSession({ keys: [process.env.COOKIE_KEY],sameSite:"none", maxAge:24*60*60*1000,secure:true,httpOnly:true }));
