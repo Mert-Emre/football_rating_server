@@ -30,7 +30,7 @@ router.post(
       req.session.userId = user.insertedId.toString();
       req.session.user = username;
       const redirectUrl = req.body.path ? req.body.path : "/";
-      return res.status(200).json({ redirectUrl, username: user.username });
+      return res.status(200).json({ redirectUrl, username: username });
     } catch (err) {
       return res.status(500).json({
         redirectUrl: "/signup",
