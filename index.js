@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
 });
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieSession({ keys: [process.env.COOKIE_KEY],sameSite:"none", maxAge:24*60*60*1000,secure:true,httpOnly:true }));
+app.use(cookieSession({ keys: [process.env.COOKIE_KEY]}));
 app.use(authRouter);
 app.use(userFetchRouter);
 app.use(scoreRoute);
